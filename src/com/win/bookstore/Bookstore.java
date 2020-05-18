@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Bookstore {
+
+    // create private properties
+    private String address = "123 Main St";
+    private String name = "Branson's Books";
+
     // create public properties
-    public String name;
-    public String address;
     public int squareFeet;
     public String openingTime;
     public String closingTime;
+    public String date;
     public boolean openToday;
     public boolean hasUsedBooks;
     public boolean hasNewBooks;
@@ -19,6 +23,14 @@ public class Bookstore {
     // create private properties
     public ArrayList<String> titles;
 
+    public String getAddress() {
+        return address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     // no-arg constructor
     public Bookstore() {
         openingTime = "8:00 AM";
@@ -27,12 +39,13 @@ public class Bookstore {
         hasUsedBooks = true;
         hasNewBooks = true;
         openOnWeekends = true;
+        squareFeet = 3500;
     }
 
     // constructors with arguments
-    public Bookstore(String name, String address) {
-        this.name = name;
-        this.address = address;
+    public Bookstore(String openingTime, String closingTime) {
+        this.openingTime = openingTime;
+        this.closingTime = closingTime;
 
         titles = new ArrayList<String>();
         loadTitles();
@@ -45,8 +58,8 @@ public class Bookstore {
     }
 
     // constructor with one argument
-    public Bookstore(String name) {
-        this.name = name;
+    public Bookstore(String openingTime) {
+        this.openingTime = openingTime;
     }
 
     // method that will determine if the store is open or not on a certain day
@@ -88,10 +101,15 @@ public class Bookstore {
 
     // method that will determine if book is in stock or not
     public void isBookInStock(String book) {
+        boolean stocked = false;
         for (String values : titles) {
-            if (values.equals(book)) {
-                System.out.println("We have " + values + " in stock!");
-            } break;
+            if (values.toLowerCase().contains(book.toLowerCase())) {
+                stocked = true;
+                System.out.println("Yes we do have " + book + " in stock.");
+            }
+        }
+        if (!stocked) {
+            System.out.println("Sorry we don't have that book.");
         }
     }
 
@@ -99,7 +117,8 @@ public class Bookstore {
         for (String values : titles) {
             if (values.toLowerCase().contains("java")) {
                 System.out.println("We have Java books in stock!");
-            } break;
+                return;
+            }
         }
     }
 
@@ -109,6 +128,12 @@ public class Bookstore {
         for (String values : titles) {
             System.out.print(values + ", ");
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s has all the books you need. We are located at %s. We are open from %s to %s.",
+                getName(), getAddress(), openingTime, closingTime);
     }
 
 }
