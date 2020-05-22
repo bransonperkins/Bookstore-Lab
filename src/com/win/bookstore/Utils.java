@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Utils {
 
     public static void loadStringsToArray(ArrayList<String> arrList) throws IOException {
-        Path path = Paths.get("C:/WinProgram/Java/src/com/win/bookstore/BookTitles.txt");
+        Path path = Paths.get("C:/WinProgram/Java/BookStoreLab/src/com/win/bookstore/BookTitles.txt");
         arrList.clear();
 
         // The stream file will also be closed here

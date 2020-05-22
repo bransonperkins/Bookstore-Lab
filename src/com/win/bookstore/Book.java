@@ -32,11 +32,7 @@ public class Book {
         }
 
         void canIAfford(boolean canIAfford) {
-            if (canIAfford) {
-                System.out.println("I have read this!");
-            } else {
-                System.out.println("I haven't read this yet.");
-            }
+            System.out.println(canIAfford ? "Yes" : "No");
         }
     }
 

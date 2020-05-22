@@ -11,25 +11,27 @@ public class BookstoreLab {
 
         Bookstore store1 = new Bookstore();
 
-        // fill in answers to questions by accessing the Bookstore class properties and methods
+        // print the store's description
         System.out.println(store1);
 
-        System.out.println("How big is the store");
-        System.out.println(store1.squareFeet);
+        System.out.println("How big is the store?");
+        System.out.println(store1.getSquareFeet());
 
+        // call the method that checks if they have new or used books
         System.out.println("Does the store have new or used books?");
         store1.newOrUsedBooks();
+
+        // instantiate new bookstore object to test some new methods
+        Bookstore store2 = new Bookstore("9:00AM", "7:30PM");
+        System.out.println(store2.getOpeningTime());
 
         // create scanner to get user inputs
         Scanner userInput = new Scanner(System.in);
 
-        // instantiate new bookstore object to test some new methods
-        Bookstore store2 = new Bookstore("Barnes & Noble", "704 Queen St");
         // test method to see if they have a certain book in stock
-
         store2.loadTitles();
         System.out.print("What book are you looking for? ");
-        String desiredBook = userInput.next();
+        String desiredBook = userInput.nextLine();
         store2.isBookInStock(desiredBook);
 
         // test method to see if they have a java book in stock
@@ -40,6 +42,7 @@ public class BookstoreLab {
         Book book = new Book("Harry Potter", 500);
         Novel novel = new Novel("Freakonomics", 300, "economics");
         System.out.println(novel.genre);
+
     }
 
 }
